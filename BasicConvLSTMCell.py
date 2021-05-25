@@ -1,5 +1,5 @@
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 class ConvRNNCell(object):
   """Abstract object representing an Convolutional RNN cell.

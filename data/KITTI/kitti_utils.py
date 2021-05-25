@@ -8,7 +8,7 @@ from scipy.interpolate import LinearNDInterpolator
 import matplotlib.pyplot as plt
 import cv2
 
-import tensorflow as tf
+import tensorflow.compat.v1. as tf
 from PIL import Image
 # from scipy.ndimage import maximum_filter1d, minimum_filter1d
 #

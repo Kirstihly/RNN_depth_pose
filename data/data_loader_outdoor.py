@@ -1,5 +1,5 @@
 from __future__ import division
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import pprint
 import random
 import numpy as np

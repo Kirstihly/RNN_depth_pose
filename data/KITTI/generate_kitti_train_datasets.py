@@ -52,7 +52,7 @@ def main():
         created_groups += create_samples_from_sequence_kitti(outfile, kitti_path, depth_path, seq_name)
 
     #print('created', sum(created_groups), 'groups')
-
+    print('created', created_groups, 'groups')
     return 0
 
 

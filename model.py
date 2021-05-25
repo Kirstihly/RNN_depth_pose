@@ -1,6 +1,6 @@
 from __future__ import division
-import tensorflow as tf
-import tensorflow.contrib.slim as slim
+import tensorflow.compat.v1 as tf
+import tf_slim as slim
 import numpy as np
 import BasicConvLSTMCell
 
@@ -13,7 +13,7 @@ def resize_like(inputs, ref):
     rH, rW = ref.get_shape()[1], ref.get_shape()[2]
     if iH == rH and iW == rW:
         return inputs
-    return tf.image.resize_nearest_neighbor(inputs, [rH.value, rW.value])
+    return tf.image.resize_nearest_neighbor(inputs, [rH, rW])
 
 def convLSTM(input, hidden, filters, kernel, scope):
 
@@ -227,8 +227,8 @@ def rnn_depth_net_fulllstm(current_input,hidden_state,is_training=True):
 def rnn_depth_net_encoderlstm(current_input,hidden_state,is_training=True):
 
     batch_norm_params = {'is_training': is_training,'decay':0.99}
-    H = current_input.get_shape()[1].value
-    W = current_input.get_shape()[2].value
+    H = current_input.get_shape()[1]
+    W = current_input.get_shape()[2]
 
     with tf.variable_scope('rnn_depth_net', reuse = tf.AUTO_REUSE) as sc:
 

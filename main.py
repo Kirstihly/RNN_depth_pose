@@ -1,10 +1,9 @@
-
 import sys
 import argparse
 from RNN_depth_trainer_mtv_occ import *
 
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
-
+tf.compat.v1.disable_eager_execution()
 
 def get_available_gpus():
     """
@@ -109,6 +108,7 @@ def main():
 
     # Multiple GPU
     devices = get_available_gpus()
+    print(len(devices), "GPU devices available")
 
     # Multiple grad and loss
     tower_grads = []
@@ -154,6 +154,8 @@ def main():
                     with tf.control_dependencies([tf.group(*update_ops)]):
                         grads = optim.compute_gradients(losses)#,var_list=depth_vars)
                         tower_grads.append(grads)
+                        print("losses", losses)
+                        print("grads", grads)
 
             outer_scope.reuse_variables()
 
