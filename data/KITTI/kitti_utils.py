@@ -2,7 +2,7 @@ import math
 import itertools
 import numpy as np
 import pykitti
-import sys
+import sys, os
 from collections import Counter, namedtuple
 from scipy.interpolate import LinearNDInterpolator
 import matplotlib.pyplot as plt
