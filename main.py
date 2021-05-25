@@ -154,8 +154,6 @@ def main():
                     with tf.control_dependencies([tf.group(*update_ops)]):
                         grads = optim.compute_gradients(losses)#,var_list=depth_vars)
                         tower_grads.append(grads)
-                        print("losses", losses)
-                        print("grads", grads)
 
             outer_scope.reuse_variables()
 
