@@ -79,6 +79,7 @@ def main():
     parser.add_argument("--continue_train", type=bool, default=False, help="Continue train")
     parser.add_argument("--restore_path", type=str, default="", help="The path to load checkpoint")
     parser.add_argument("--eval_set_dir", type=str, default=None, help="The path to the evaluation directory")
+    parser.add_argument("--batch_size", type=int, default=3, help="The number of batch size")
     parser.add_argument("--num_epochs", type=int, default=20, help="The number of training epochs")
     parser.add_argument("--summary_freq", type=int, default=100, help="The frequence to summarize and save model")
     parser.add_argument("--eval_freq", type=int, default=1000, help="The frequence to evaluate model")
@@ -96,7 +97,7 @@ def main():
     m_trainer = RNN_depth_trainer()
 
     # Initialize data loading object
-    dataLoader = m_trainer.initDataloader(args.dataset_dir, num_epochs=args.num_epochs)
+    dataLoader = m_trainer.initDataloader(args.dataset_dir, batch_size=args.batch_size, num_epochs=args.num_epochs)
 
     # A boolean evaluate every # steps
     eval_step = tf.placeholder(tf.bool, [])
